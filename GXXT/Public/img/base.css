@@ -1,0 +1,111 @@
+@CHARSET "UTF-8";
+/*base style for css file*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	vertical-align:baseline;
+	background:transparent;
+	font-family: "微软雅黑",Arial,Helvetica,sans-serif;
+	
+}
+table,caption,tbody,tfoot,thead,tr,th,td{
+	/*border-collapse:collapse;8*/
+  	margin:0;
+	padding:0;
+	outline:0;
+	font-family : "微软雅黑",Arial,Helvetica,sans-serif;
+}
+
+ul,ol {
+	list-style:none;
+}
+blockquote,q{
+	quotes:none;
+}
+blockquote:before,blockquote:after,q:before,q:after{
+	content:'';
+	content:none;
+}
+
+/*remember to define focus styles!*/
+:focus{
+	outline:0;
+}
+
+/*remember to highlight inserts somehow!*/
+ins{
+	text-decoration:none;
+}
+del{
+	text-decoration:line-through;
+}
+
+/*tables still need 'cellspacing="0"' in the markup */
+table{
+	border-collapse:collapse;
+	
+}
+
+
+a {
+	text-decoration: none;
+	color:#000;
+}
+a:hover {
+	text-decoration: none;
+}
+
+.fr {
+	float:right;
+}
+.fl {
+	float:left;
+}
+.clear {
+	clear:both;
+	font-size:0;
+	
+}
+
+div.quotes {
+	padding: 3px;MARGIN:20px 5px; text-align: center; font-size:12px;
+}
+div.quotes A {
+	/*BORDER-RIGHT: #ddd 1px solid; padding-RIGHT:2px 5px; BORDER-TOP: #ddd 1px solid; padding-LEFT: 5px; padding-BOTTOM: 2px; BORDER-LEFT: #ddd 1px solid; color: #aaa; MARGIN-RIGHT: 2px; padding-TOP: 2px; BORDER-BOTTOM: #ddd 1px solid; text-decoration: none*/
+	border:1px solid #ddd;border-radius:3px;color:#aaa;display:inline-block;width:25px;text-align:center;height:25px;line-height:25px;margin-right:10px;text-decoration:none;
+}
+div.quotes A:hover {
+	/*BORDER-RIGHT: #a0a0a0 1px solid; padding-RIGHT: 5px; BORDER-TOP: #a0a0a0 1px solid; padding-LEFT: 5px; padding-BOTTOM: 2px; BORDER-LEFT: #a0a0a0 1px solid; MARGIN-RIGHT: 2px; padding-TOP: 2px; BORDER-BOTTOM: #a0a0a0 1px solid*/
+	border:1px solid #a0a0a0;
+}
+/*div.quotes A:active {
+	BORDER-RIGHT: #a0a0a0 1px solid; padding-RIGHT: 5px; BORDER-TOP: #a0a0a0 1px solid; padding-LEFT: 5px; padding-BOTTOM: 2px; BORDER-LEFT: #a0a0a0 1px solid; MARGIN-RIGHT: 2px; padding-TOP: 2px; BORDER-BOTTOM: #a0a0a0 1px solid
+}*/
+div.quotes SPAN.current {
+	/*BORDER-RIGHT: #e0e0e0 1px solid; padding-RIGHT: 5px; BORDER-TOP: #e0e0e0 1px solid; padding-LEFT: 5px; FONT-WEIGHT: bold; padding-BOTTOM: 2px; BORDER-LEFT: #e0e0e0 1px solid; color: #aaa; MARGIN-RIGHT: 2px; padding-TOP: 2px; BORDER-BOTTOM: #e0e0e0 1px solid; BACKGROUND-color: #f0f0f0*/
+	background:#00a0e9;border:1px solid #00a0e9;border-radius:3px;color:#fff;display:inline-block;font-weight:bold;height:25px;line-height:25px;margin-right:10px;width:25px;text-align:center;
+}
+div.quotes SPAN.disabled {
+	/*BORDER-RIGHT: #f3f3f3 1px solid; padding-RIGHT: 5px; BORDER-TOP: #f3f3f3 1px solid; padding-LEFT: 5px; padding-BOTTOM: 2px; BORDER-LEFT: #f3f3f3 1px solid; color: #ccc; MARGIN-RIGHT: 2px; padding-TOP: 2px; BORDER-BOTTOM: #f3f3f3 1px solid;*/
+	border:1px solid #f3f3f3;border-radius:5px;color:#ccc;display:inline-block;height:25px;text-align:center;line-height:25px;margin-right:10px;padding:0 8px;
+}
+
+.blue{ color:#1884cf;}
+.green{ color: #093;}
+.red{ color:#F00;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

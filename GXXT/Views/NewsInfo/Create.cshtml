@@ -1,0 +1,120 @@
+﻿@model Maticsoft.Model.NewsInfo
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>信息</title>
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+        <script src="@Url.Content("~/Scripts/kindeditor/kindeditor.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/kindeditor/lang/zh_CN.js")" type="text/javascript"></script>
+           <link href="@Url.Content("~/Scripts/Uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/Uploadify/jquery.uploadify.min.js")" type="text/javascript"></script>
+<link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="add_test_img"  >
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">添加信息</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>添加信息</span></div>
+    <form method="post" action="/NewsInfo/Edit">
+    <ul class="forminfo">
+         <li><label>标题</label>@Html.TextBoxFor(m => m.Title, new { @class = "dfinput" })</li>
+         <li><label>摘要</label>@Html.TextBoxFor(m => m.Str2, new { @class = "dfinput" })</li>
+           <li><label>信息类别</label>
+               <select name="Str1" id="Category">
+                   <option value="">请选择</option>
+                      <option value="学校新闻">学校新闻</option>
+                      <option value="通知公告">通知公告</option>
+                      <option value="补贴政策">补贴政策</option>
+                      <option value="推荐招聘">推荐招聘</option>
+                      <option value="大学生村官">大学生村官</option>
+                      <option value="人才引进">人才引进</option>
+                       <option value="就业指南">就业指南</option>
+                       <option value="系统信息">系统信息</option>
+                   
+               </select>
+           </li>
+           @*<li><label>图片</label>
+               <input type="hidden" name="PicID" id="PicID" value="@Model.PicID" class="txt_input" style="width:220px;height:23px;margin-bottom:0px;"/>
+               <div style="padding-top:12px;padding-left:90px;">
+                        <span class="explanation">
+                            <button class="download" type="button" id="uploadify1">
+                                上传</button></span></div>
+           <div id="divimg1"></div>
+                    
+         </li>*@
+          <li><label>信息内容</label>@Html.TextAreaFor(m => m.NewsContent, new { style = "width:700px;height:300px" })</li>
+
+        @Html.HiddenFor(m=>m.ID)
+        @Html.HiddenFor(m=>m.Time)
+            <li><label>&nbsp;</label><input name="" style="border:0;" type="submit" class="btn" value="确认保存"/></li>
+        
+    
+    </ul>
+    </form>
+    
+    </div>
+
+
+</body>
+
+</html>
+<script type="text/ecmascript">
+    $(function () {
+        if ('@Model.ID' != "0") {
+            $("#Category").val('@Model.Str1');
+
+        }
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('#NewsContent',
+            {
+                uploadJson: '/Scripts/kindeditor/asp.net/upload_json.ashx',
+                fileManagerJson: '/Scripts/kindeditor/asp.net/file_manager_json.ashx',
+                allowFileManager: true
+            });
+        });
+
+        setTimeout(function () {
+            $('#uploadify1').uploadify({
+                'onInit': function () { //载入时触发，将flash设置到最小
+                    $("#uploadify1-queue").hide();
+                },
+                'multi': false,
+                'fileSizeLimit': '512000KB',
+                'width': 50,
+                'height': 20,
+                'buttonText': '上传',
+                'removeCompleted': false,
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Home/uploadHead',
+                'onUploadSuccess': function (file, data, response) {
+                    alert("上传成功！");
+                    $("#divimg1").html("<img src='/Scripts/kindeditor/attached/image/" + data + "'>");
+                    $("#PicID").val(data);
+                }
+            });
+
+          
+          
+
+           
+        });
+    });
+    </script>
+

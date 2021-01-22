@@ -1,0 +1,33 @@
+﻿@model MVC.PagedList<Maticsoft.Model.Goods>
+@using MVC;
+@{
+    Layout = null;
+}
+ <ul class="list">
+     @foreach (var item in Model)
+     {
+           <a href="/Home/mcydetail?ID=@item.ID">
+        </a><li><a href="/Wap/Detail?ID=@item.ID">
+            <div class="left">
+                <div class="way">@item.Name</div>
+                <div class="line"><strong>联系人：@item.Contacts</strong></div>
+                <div class="time"><strong>电话：@item.Phone</strong></div>
+                <div class="line"><strong>类别：@item.GoodsType</strong></div>
+                <div class="line">(押金<span style="padding-left:10px;color:#999;">@item.Price</span>)</div>
+            </div>
+            </a><div class="right"><a href="/Home/mcydetail?ID=@item.ID">
+                </a><div class="recommended"><a href="/Home/mcydetail?ID=@item.ID">
+                    </a><a href="/Wap/Detail?ID=@item.ID" class="jian">@item.State</a>
+                  @*  <span class="own"></span>*@
+                </div>
+                  <a class="tel" href="/Wap/Detail?ID=@item.ID" ><span style="text-align:center;">查看</span></a>
+            </div>
+        </li>
+     }
+      
+      
+            </ul>
+  <div class="pagination pagination-centered" style="font-size:small;">
+   
+               @Html.Pager(Model, new PagerOptions { ShowFirstLast = false, PrevPageText = "上一页", NextPageText = "下一页", AlwaysShowFirstLastPageNumber = true }, "Paged", new { action = "Index" })
+           </div>

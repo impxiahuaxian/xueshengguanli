@@ -1,0 +1,63 @@
+﻿@model MVC.PagedList<Maticsoft.Model.Teachers>
+@using  MVC;
+                        @{
+                            string UserName = Maticsoft.BLL.Users.GetUsersName();
+                            string UserType = "";
+                            if (UserName.Substring(0, 3) == "管理员")
+                            {
+                                UserType = "管理员";
+                            }
+                            else if (UserName.Substring(0, 2) == "教师")
+                            {
+                                UserType = "教师";
+                            }
+                            else
+                            {
+                                UserType = "用户";
+                            }
+                        }
+    <table class="tablelist"  >
+    	<thead>
+    	<tr>
+        <th>序号<i class="sort"><img src="/Content/images/px.gif" /></i></th>        
+            <th>教师号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>所在系</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+              @if (Model != null && Model.Count > 0)
+{
+    int i = 0; 
+       
+            foreach (var item in Model)
+        {
+            i++;    
+        <tr>
+        <td>@i</td>
+            <td>@item.JSH</td>
+            <td>@item.Name</td>
+            <td>@item.Sex</td>
+            <td>@item.SZX</td>
+      
+        <td>
+            @if (UserType == "管理员")
+            {
+                <a href="/Teachers/Create?ID=@item.ID"   >修改</a> 
+                <a href="#" onclick="Del(@item.ID)"   >删除</a>   
+            }
+        </td>
+        </tr>    
+            }
+} 
+        </tbody>
+    </table>
+    
+ <div class="pagination pagination-centered">
+    	  @Html.Pager(Model, new PagerOptions { ShowFirstLast = false, PrevPageText = "上一页", NextPageText = "下一页", AlwaysShowFirstLastPageNumber = true }, "Paged", new { action = "Manage" })
+    </div>
+
+    
+

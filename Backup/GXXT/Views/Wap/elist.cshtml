@@ -1,0 +1,38 @@
+﻿@model List<Maticsoft.Model.Goods>
+@{
+    Layout = null;
+}
+ 
+	<div class="schedule clearfloat">
+       @if (Model!=null)
+       {
+           foreach (var item in Model)
+                    {
+		    	<div class="content clearfloat box-s">					
+		    		<div class="list clearfloat fl box-s">
+		    			<a href="/Wap/Detail?id=@item.ID">
+			    			
+			    			<div class="right clearfloat" style="float:left;">
+			    				<div class="tit clearfloat">
+			    					<p class="fl">@item.Name</p>
+			    					
+			    				</div>
+			    				<p class="recom-jianjie">品牌：@item.GoodPP  </p>
+                                <p class="recom-jianjie">状态：@item.State  </p>
+                                <p class="recom-jianjie">发布日期：@item.Str1 </p>
+			    				</div>
+                          
+                            </a>
+			    			</div>
+		    		</div>	
+		    		<div class="topsche-top entrust box-s clearfloat">
+                          <p class="tit fr entrust-btn" onclick="DY(this)" id="@item.ID">
+							取消收藏
+						</p>
+                        
+					</div>
+		    	
+     }
+       }      
+			  
+        </div>

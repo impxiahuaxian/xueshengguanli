@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Regist";
+    Layout = null;
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+<link href="/pcwap/css/huiyuan.css"type="text/css" rel="stylesheet">
+</head>
+<body style="background:#fff;">
+<div id="denglu">
+<div class="left_dl"><img src="/pcwap/image/logo.jpg">
+</div>
+<a href="/Home/Index">返回首页</a>
+</div>
+<div id="zhuce">
+<div class="tittle_zc">
+<span>会员注册</span>
+</div>
+<div class="conent">
+<div class="left_con">
+<table width="536" height="425" border="0" style="margin-top:20px;">
+  
+   <tr>
+    <td width="90" height="54"><div align="right">手机号码：</div></td>
+    <td width="436"><input type="text" id="UsersName" class="text_chang"/></td>
+  </tr>
+    <tr>
+    <td width="90" height="54"><div align="right">真实姓名：</div></td>
+    <td width="436"><input type="text" id="Name" class="text_chang"/></td>
+  </tr>
+    <tr>
+    <td width="90" height="54"><div align="right">身份证号：</div></td>
+    <td width="436"><input type="text" id="UserSFZ" class="text_chang"/></td>
+  </tr>
+  <tr>
+    <td height="54"><div align="right">密   码：</div></td>
+    <td><input type="password" id="UserPSD" class="text_chang"/></td>
+  </tr>
+    <tr>
+    <td height="54"><div align="right">确认密码：</div></td>
+    <td><input type="password" class="text_chang" id="ComUserPSD"/></td>
+  </tr>
+  <tr>
+    <td height="55"><div align="right"></div></td>
+    <td><span><input name="" type="checkbox" value="" checked="checked"  style="float:left;"/>我已认真阅读并同意<a>《学生信息管理系统服务协议》</a></span></td>
+  </tr>
+  <tr>
+    <td height="65"><div align="right"></div></td>
+    <td><input type="button" class="zhuce_button" value="免费注册" onclick="subregist()" /></td>
+  </tr>
+  <tr>
+    <td height="30"><div align="right"></div></td>
+    <td>已注册<a href="/Home/Login">在这里登陆</a></td>
+  </tr>
+</table>
+
+</div>
+<div class="right_shuo">
+<div class="tittle_se">注册会员注意事项 </div>
+<h3>提倡客观真实，反对虚假新闻</h3>
+<p>要坚持客观、公正的报道原则，建立健全管理制度，规范信息采集、制作、发布流程，提供客观、真实的新闻信息，防止虚假新闻和有害信息在网上传播。</p>
+
+<h3>提倡遵纪守法，反对违规违纪</h3>
+<p>要遵循爱国、守法、公平、诚信的基本原则，自觉遵守国家有关互联网的法律、法规和政策，坚持依法办网，传播合法内容，杜绝违规从事互联网新闻信息服务。</p>
+
+<h3>提倡遵纪守法，反对违规违纪</h3>
+<p>要坚持客观、公正的报道原则，建立健全管理制度，规范信息采集、制作、发布流程，提供客观、真实的新闻信息，防止虚假新闻和有害信息在网上传播。余件</p>
+
+<h3>提倡格调高雅，反对低级媚俗</h3>
+<p>要处理好社会效益与经济效益的关系，始终把社会效益放在第一位，自觉接受公众监督，坚持高品位、高格调，抵制淫秽、色情、暴力等有害信息，摒弃低级趣味之风。</p>
+</div>
+</div>
+</div>
+<!--footer-->
+<div id="footer">
+ <p><span>Copyright © 2019  学生信息管理系统所有 ，服务热线：0311-80798225</span></p></div>
+</body>
+</html>
+
+<script type="text/ecmascript">
+    function subregist() {
+        var UsersName = $("#UsersName").val();
+        var UserPSD = $("#UserPSD").val();
+        var ComUserPSD = $("#ComUserPSD").val();
+        var Name = $("#Name").val();
+        var UserSFZ = $("#UserSFZ").val();
+        if (!checkPhone()) {
+            return;
+        }
+        if (Name == "") {
+            alert("请输入真实姓名");
+            return false;
+        }
+        if (UserPSD == "") {
+            alert("请输入密码");
+            return false;
+        }
+        if (UserSFZ == "") {
+            alert("请输入身份证号");
+            return false;
+        }
+        if (ComUserPSD == "") {
+            alert("请确认密码");
+            return false;
+        }
+        if (ComUserPSD != UserPSD) {
+            alert("密码输入不一致");
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            traditional: true,
+            url: "/Home/regist",
+            data: { UsersName: UsersName, UserPSD: UserPSD, Name: Name, QQ: UserSFZ },
+            datatpye: "json",
+            success: function (data) {
+                if (!data) {
+                    alert("当前手机号已经注册！");
+                    window.location = "/Home/Regist";
+                }
+                else {
+                    alert("注册成功！");
+                    window.location = "/Home/Login";
+                }
+            }
+        });
+    }
+
+    function checkPhone() {
+        var phone = document.getElementById('UsersName').value;
+        if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
+            alert("手机号码有误，请重填");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>

@@ -1,0 +1,76 @@
+﻿@model Conris.DBA.ViewModel.AdminUsersEdit
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="/Content/js/jquery.js"></script>
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="/Work/main">首页</a></li>
+    <li><a href="#">修改密码</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>修改密码</span></div>
+    
+    <ul class="forminfo">
+        <li><label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+            
+            <input class="dfinput" id="LoginPsd" name="LoginPsd" type="password">
+            <i>密码长度在6到15个字符之间</i></li>
+        <li><label>确认密码</label><input name="" type="password" class="dfinput" id="txtConfirmPwd"><i>密码保持一致</i></li>
+    <li><label>&nbsp;</label><input name="" type="button" class="btn"  style="border:0;" value="确认保存" id="btnSubmit"/></li>
+    </ul>
+    
+    
+    </div>
+
+
+</body>
+
+</html>
+<script type="text/ecmascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            var LoginPsd = $("#LoginPsd").val();
+            if (LoginPsd == null || LoginPsd == "") {
+                alert("请输入密码！");
+                return false;
+            }
+            if (LoginPsd.length < 6 || LoginPsd.length > 20) {
+                alert("密码长度不得少于6个字符或者多于20个字符！");
+                return false;
+            }
+            if ($("#txtConfirmPwd").val() != LoginPsd) {
+                alert("两次密码输入不一致！");
+                return false;
+            }
+            $.ajax({
+                type: "post",
+                traditional: true,
+                url: "/Work/EditMM",
+                data: { UserPSD: LoginPsd },
+                datatpye: "json",
+                success: function (data) {
+                       alert("密码修改成功！");
+                       window.location = "/Work/main";
+                }
+            });
+        });
+    });
+
+</script>

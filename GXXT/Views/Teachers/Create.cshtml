@@ -1,0 +1,43 @@
+﻿@model Maticsoft.Model.Teachers
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>入库</title>
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+<link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="add_test_img"  >
+
+	
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>添加教师</span></div>
+    <form method="post" action="/Teachers/Edit">
+    <ul class="forminfo">
+        <li><label>教师号</label>@Html.TextBoxFor(m => m.JSH, new { @class = "dfinput" })</li>
+        <li><label>密码</label>@Html.PasswordFor(m => m.PSD, new { @class = "dfinput" })</li>
+        <li><label>姓名</label>@Html.TextBoxFor(m => m.Name, new { @class = "dfinput" })</li>
+        <li><label>性别</label>@Html.TextBoxFor(m => m.Sex, new { @class = "dfinput" })</li>
+        <li><label>所在系</label>@Html.TextBoxFor(m => m.SZX, new { @class = "dfinput" })</li>
+        @Html.HiddenFor(m=>m.ID)
+    <li><label>&nbsp;</label><input name="" style="border:0;" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+    </form>
+    
+    </div>
+
+
+</body>
+
+</html>
+
+

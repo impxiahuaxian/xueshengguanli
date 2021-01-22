@@ -1,0 +1,319 @@
+﻿@model Maticsoft.Model.Students
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <script src="../../Scripts/jquery-1.7.1.js"></script>
+<link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/Content/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Content/js/jquery.js"></script>
+<script type="text/javascript" src="/Content/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/Content/js/select-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Content/Date/jquery.datetimepicker.css"/ >
+<script src="/Content/Date/jquery.js"></script>
+<script src="/Content/Date/jquery.datetimepicker.js"></script>
+       <link href="@Url.Content("~/Scripts/Uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/Uploadify/jquery.uploadify.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".click").click(function () {
+            $(".tip").fadeIn(200);
+        });
+
+        $(".tiptop a").click(function () {
+            $(".tip").fadeOut(200);
+        });
+
+        $(".sure").click(function () {
+            $(".tip").fadeOut(100);
+        });
+
+        $(".cancel").click(function () {
+            $(".tip").fadeOut(100);
+        });
+
+    });
+</script>
+</head>
+
+
+<body class="add_test_img">
+
+
+    <div class="rightinfo">   
+        <form action="/Students/Edit" id="form1"  method="post">
+<div id="tab1" class="tabson" style="display: block;">
+    <table border="1" width="100%" >
+         <tr style=" height:50px;">
+            <td colspan="6" style="text-align:center;">学生信息表</td>
+        </tr>
+          <tr style=" height:50px;"><td><label>姓名</label></td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+            <td><label>身份证号</label></td>
+            <td >@Html.TextBoxFor(m => m.UserSFZ, new { @style = "width:300px;" })</td>
+              <td  rowspan="2" ><label>照片</label></td>
+               
+            <td rowspan="2" id="zp"></td>
+        </tr>
+          
+           <tr style=" height:50px;"><td><label>联系方式</label></td>
+            <td>@Html.TextBoxFor(m => m.Phone)</td>
+                <td ><label>籍贯</label></td>
+            <td >@Html.TextBoxFor(m => m.UserJG)</td>
+           
+        </tr>
+         <tr style=" height:50px;">  
+              <td><label>性别</label></td>
+                @{
+                    List<SelectListItem> list = new List<SelectListItem> {
+
+                new SelectListItem { Text = "男", Value = "男",Selected = true},
+
+                new SelectListItem { Text = "女", Value = "女" } };  
+                   }
+            <td>@Html.DropDownList("Sex", list, new { @class = "select2", @style = "width:150px;border:1;" })</td>
+            <td><label>现住地</label></td>
+            <td >@Html.TextBoxFor(m => m.Str1)</td>
+              <td><label>年龄</label></td>
+            <td >@Html.TextBoxFor(m => m.Age)</td>
+        </tr>
+         <tr style=" height:50px;"><td><label>家庭成员姓名</label></td>
+            <td>@Html.TextBoxFor(m => m.CYName)</td>
+            <td><label>关系</label></td>
+            <td >@Html.TextBoxFor(m => m.CYGX)</td>
+               <td><label>紧急电话</label></td>
+            <td >@Html.TextBoxFor(m => m.LXDH)</td>
+        </tr>
+          <tr style=" height:50px;"><td><label>政治面貌</label></td>
+            <td>
+            @Html.TextBoxFor(m => m.JKZPic)
+            </td>
+            <td ><label>毕业证</label></td>
+            <td colspan="3"> 
+                <input type="hidden" name="ZGZPic" id="ZGZPic" value="@Model.ZGZPic" class="txt_input" style="width:220px;height:23px;margin-bottom:0px;"/>
+              
+                <div id="divimg4"></div></td>
+             
+        </tr>
+         <tr style=" height:50px;"><td><label>个人照片</label></td>
+            <td>
+                 <input type="hidden" name="ZPPic" id="ZPPic" value="@Model.ZPPic" class="txt_input" style="width:220px;height:23px;margin-bottom:0px;"/>
+             
+                <div id="divimg1"></div>
+            </td>
+            <td ><label>身份证件</label></td>
+            <td colspan="3">
+                <input type="hidden" name="SFZPic" id="SFZPic" value="@Model.SFZPic" class="txt_input" style="width:220px;height:23px;margin-bottom:0px;"/>
+             
+                  <div id="divimg2"></div>
+            </td>
+             
+        </tr>
+         <tr style=" height:50px;"><td><label>毕业院校</label></td>
+            <td>@Html.TextBoxFor(m => m.IsZJ)</td>
+            <td><label>系部</label></td>
+            <td >@Html.TextBoxFor(m => m.IsBX)</td>
+               <td><label>专业</label></td>
+            <td >@Html.TextBoxFor(m => m.IsJDLK)</td>
+        </tr>
+          <tr style=" height:50px;">
+              <td><label>学历</label></td>
+            <td>@Html.TextBoxFor(m => m.IsYXQ)</td>
+            <td ><label>几年制</label></td>
+            <td  colspan="3" >@Html.TextBoxFor(m => m.IsJQSG)</td>
+             
+        </tr>
+        <tr style=" height:50px;"><td><label>入学时间</label></td>
+            <td>@Html.TextBoxFor(m => m.SGRQ)</td>
+            <td><label>毕业时间</label></td>
+            <td colspan="3"  >@Html.TextBoxFor(m => m.XGRQ)</td>
+             
+        </tr>
+        
+               
+              <tr style=" height:50px;"><td><label>备注</label></td>
+            <td colspan="4" >@Html.TextBoxFor(m => m.Remark)</td>
+                  
+          
+          
+        </tr>
+           
+       
+    </table>
+  
+    
+    </div>
+<input  type="hidden" value="@Model.ID" name="ID"/>
+            <input  type="hidden" value="@Model.JYGZ" name="JYGZ" id="JYGZ"/>
+    </form>
+    
+    
+    
+    </div>
+   
+      
+    <script type="text/javascript">
+        $('.tablelist tbody tr:odd').addClass('odd');
+	</script>
+</body>
+
+</html>
+
+<script type="text/ecmascript">
+    $(document).ready(function () {
+        if ('@Model.ZGZPic' != "") {
+            $("#divimg4").html("<a href='/Scripts/kindeditor/attached/image/" + '@Model.ZGZPic' + "' target='_blank'>" + '@Model.ZGZPic' + "</a>");
+        }
+        if ('@Model.ZPPic' != "") {
+            $("#divimg1").html("<a href='/Scripts/kindeditor/attached/image/" + '@Model.ZPPic' + "' target='_blank'>" + '@Model.ZPPic' + "</a>");
+            $("#zp").html("<image src='/Scripts/kindeditor/attached/image/" + '@Model.ZPPic' + "' style='width:100px;height:100px;'/>");
+
+        }
+        if ('@Model.SFZPic' != "") {
+            $("#divimg2").html("<a href='/Scripts/kindeditor/attached/image/" + '@Model.SFZPic' + "' target='_blank'>" + '@Model.SFZPic' + "</a>");
+        }
+        if ('@Model.JKZPic' != "") {
+            $("#divimg3").html("<a href='/Scripts/kindeditor/attached/image/" + '@Model.JKZPic' + "' target='_blank'>" + '@Model.JKZPic' + "</a>");
+        }
+        $("#SubSave").click(function () {
+            $("#JYGZ").val(GetValue());
+            $("#form1").submit();
+        });
+
+        SetValue('@Model.JYGZ');
+    });
+
+    function SetValue(typeStr) {
+
+        var cbArray = new Array;
+        cbArray = typeStr.split(",");
+        var str = document.getElementsByName("xz");
+        var objarray = str.length;
+        for (i = 0; i < cbArray.length; i++) {
+            for (j = 0; j < objarray; j++) {
+                if (str[j].value == cbArray[i]) {
+                    str[j].checked = true;
+                }
+            }
+        }
+    }
+
+    function GetValue() {
+        var str = document.getElementsByName("xz");
+        var objarray = str.length;
+        var chestr = "";
+        for (i = 0; i < objarray; i++) {//  
+            if (str[i].checked == true) {
+
+                chestr += str[i].value + ",";
+            }
+        }//  
+        return chestr;
+    }
+    $('#SGRQ').datetimepicker();
+    $('#SGRQ').datetimepicker({
+        lang: "ch",
+        format: "Y/m/d",
+        timepicker: false,
+        yearEnd: 2050,
+        todayButton: false
+    });
+    $('#XGRQ').datetimepicker();
+    $('#XGRQ').datetimepicker({
+        lang: "ch",
+        format: "Y/m/d",
+        timepicker: false,
+        yearEnd: 2050,
+        todayButton: false
+    });
+
+    $(function () {
+        setTimeout(function () {
+            $('#uploadify1').uploadify({
+                'onInit': function () { //载入时触发，将flash设置到最小
+                    $("#uploadify1-queue").hide();
+                },
+                'multi': false,
+                'fileSizeLimit': '512000KB',
+                'width': 50,
+                'height': 20,
+                'buttonText': '上传',
+                'removeCompleted': false,
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Home/uploadHead',
+                'onUploadSuccess': function (file, data, response) {
+                    alert("上传成功！");
+                    $("#divimg1").html("<a href='/Scripts/kindeditor/attached/image/" + data + "' target='_blank'>" + data + "</a>");
+                    $("#ZPPic").val(data);
+                    $("#zp").html("<image src='/Scripts/kindeditor/attached/image/" + data + "' style='width:100px;height:100px;'/>");
+                }
+            });
+
+            $('#uploadify2').uploadify({
+                'onInit': function () { //载入时触发，将flash设置到最小
+                    $("#uploadify2-queue").hide();
+                },
+                'multi': false,
+                'fileSizeLimit': '512000KB',
+                'width': 50,
+                'height': 20,
+                'buttonText': '上传',
+                'removeCompleted': false,
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Home/uploadHead',
+                'onUploadSuccess': function (file, data, response) {
+                    alert("上传成功！");
+                    $("#divimg2").html("<a href='/Scripts/kindeditor/attached/image/" + data + "' target='_blank'>" + data + "</a>");
+                    $("#SFZPic").val(data);
+                }
+            });
+            $('#uploadify3').uploadify({
+                'onInit': function () { //载入时触发，将flash设置到最小
+                    $("#uploadify3-queue").hide();
+                },
+                'multi': false,
+                'fileSizeLimit': '512000KB',
+                'width': 50,
+                'height': 20,
+                'buttonText': '上传',
+                'removeCompleted': false,
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Home/uploadHead',
+                'onUploadSuccess': function (file, data, response) {
+                    alert("上传成功！");
+                    $("#divimg3").html("<a href='/Scripts/kindeditor/attached/image/" + data + "' target='_blank'>" + data + "</a>");
+                    $("#JKZPic").val(data);
+                }
+            });
+            $('#uploadify4').uploadify({
+                'onInit': function () { //载入时触发，将flash设置到最小
+                    $("#uploadify4-queue").hide();
+                },
+                'multi': false,
+                'fileSizeLimit': '512000KB',
+                'width': 50,
+                'height': 20,
+                'buttonText': '上传',
+                'removeCompleted': false,
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Home/uploadHead',
+                'onUploadSuccess': function (file, data, response) {
+                    alert("上传成功！");
+                    $("#divimg4").html("<a href='/Scripts/kindeditor/attached/image/" + data + "' target='_blank'>" + data + "</a>");
+                    $("#ZGZPic").val(data);
+                }
+            });
+        });
+    });
+</script>

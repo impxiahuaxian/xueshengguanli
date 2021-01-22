@@ -1,0 +1,191 @@
+﻿@model Maticsoft.Model.Goods
+@{
+    ViewBag.Title = "rehyxx";
+    Layout = null;
+}
+ 
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; Users-scalable=0;">
+<meta content="telephone=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>校园物品共享系统</title>
+    <script src="../../Scripts/jquery-1.7.1.js"></script>
+    <script src="../../Scripts/jquery-form.js"></script>
+<link rel="stylesheet" type="text/css" href="/pcwap/assets/api/css/carpool/common.css">
+<link rel="stylesheet" type="text/css" href="/pcwap/assets/api/css/carpool/style.css">
+<link href="/pcwap/assets/api/css/fans.css?v=1.1" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+.tdzjp{color: #999999;padding:0 0 0 10px; font-size:16px; font-weight:normal;text-align: left;}
+</style>
+</head>
+<body>
+<div class="toplink">
+	<div class="con">
+        <a class="back" href="javascript:history.go(-1)"><img src="/pcwap/assets/api/images/back.png"></a>
+        <h2 class="ind">校园物品共享</h2>
+       
+    </div>
+    </div>
+    <form action="/Wap/OrderEdit" method="post">
+<div class="content">
+	<div class="ttl">
+    	<img src="/pcwap/assets/api/images/coin1.png"><span>我要租</span>
+    
+    </div>
+	<ul class="list">
+    <!---->
+<div class="cardexplain">
+<ul class="round">
+@*<li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody>
+    <tr>
+<th style="font-size:12px;">物品图片</th>
+<td>
+
+              <span class="section_right">
+                   
+                        <img alt="1" height="60px" src="" style="display: none;"><img alt="加载中..." title="图片加载中..." src="http://statics.2cto.com/images/s_nopic.gif">                      
+                  
+ 
+                    @using (Html.BeginForm("uploadHead", "Home", FormMethod.Post, new { ID = "Users_head_form", enctype = "multipart/form-data" }))
+                    {
+                        <input accept="image/*" class="filebtn" id="headUpdate" name="head" type="file"/>
+ 
+                    }
+ 
+                </span>
+</tr>
+</tbody></table>
+</li>*@
+    
+<li>
+<li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;">物品名称</th>
+<td> @Html.TextBoxFor(m => m.Name, new { @id = "iptname",@class="dropdown-select",@placeholder="必填"})</td>
+</tr>
+</tbody></table>
+</li>
+
+<li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;">物品押金</th>
+<td> @Html.TextBoxFor(m => m.Price, new { @id = "iptphone",@class="dropdown-select",@placeholder="必填"})</td>
+</tr>
+</tbody></table>
+</li>
+      <li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;">租赁方式</th>
+<td> 
+    
+<select  class="dropdown-select"  name="PurchaserType" id="PurchaserType" style="border:1px #FF7F00 solid;">
+<option value="日租">日租</option>
+    <option value="月租">月租</option>
+</select> 
+</td>
+</tr>
+</tbody></table>
+</li>
+
+    <li  id="ts">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;" >天数</th>
+<td> @Html.TextBoxFor(m => m.Str2, new { @id = "iptphone",@class="dropdown-select",@placeholder="必填"})</td>
+</tr>
+</tbody></table>
+</li>
+        <li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;">姓名</th>
+<td> @Html.TextBoxFor(m => m.PurchaserName, new { @id = "iptphone",@class="dropdown-select",@placeholder="必填"})</td>
+</tr>
+</tbody></table>
+</li>
+           <li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;">电话</th>
+<td> @Html.TextBoxFor(m => m.PurchaserPhone, new { @id = "iptphone",@class="dropdown-select",@placeholder="必填"})</td>
+</tr>
+</tbody></table>
+</li>
+         <li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<th style="font-size:12px;">交易地点</th>
+<td> @Html.TextBoxFor(m => m.YJ, new { @id = "iptphone",@class="dropdown-select",@placeholder="必填"})</td>
+</tr>
+</tbody></table>
+</li>
+ @Html.HiddenFor(m=>m.ID)
+ <li>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tbody><tr>
+<td  style="width:35%;"> </td>
+    <td > <input type="submit" value="提交" class="submit" style="margin-left:5px;text-align:center;" id="btnSave"></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</div>
+    <!---->
+    </ul>
+</div>
+        </form>
+</body></html>
+
+
+<script type="text/javascript">
+    var flag = "0";
+ 
+    $(function () {
+        $("#PurchaserType").change(function () {
+            if ($("#PurchaserType").val() == "日租") {
+                $("#ts").show();
+            }
+            else {
+                $("#ts").hide();
+            }
+                        
+        })
+        $("#GoodsType").val('@Model.GoodsType');
+            
+        $("#headImage").click(function () {
+            upload();
+        });
+        function upload() {
+            $("#headUpdate").click();
+            $("#headUpdate").unbind().change(function () {
+                //$("#Users_head_form").submit();
+
+                $("#Users_head_form").ajaxSubmit({
+                    url: '@Url.Action("uploadHead")',
+                    type: "post",
+                    dataType: "json",
+                    success: function (json) {
+                        if (json.Success) {
+                            $("#headImageURL ").attr("src", json.Path);
+                        } else {
+                            alert(json.Msg);
+                        }
+                    }
+                });
+
+            })
+        }
+    
+      
+     
+    });
+
+</script>

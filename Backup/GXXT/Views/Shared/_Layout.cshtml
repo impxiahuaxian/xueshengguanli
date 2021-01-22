@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>学生信息管理系统</title>
+<link href="/pcwap/css/style.css" type="text/css" rel="stylesheet">
+
+     <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+
+</head>
+<body>
+<div id="header">
+<div class="logo"><img src="/pcwap/image//logo.jpg"></div>
+    @if (Maticsoft.BLL.Users.GetNowUserID()=="")
+    {
+       <div class="shear"><a href="/Home/Login" class="fenxi">登陆</a><span>|</span><a href="/Home/Regist" class="fenxi">注册</a>
+</div> 
+    }
+   else{
+      <div class="shear"><a href="#" class="fenxi">@Maticsoft.BLL.Users.GetUsersName()</a><span>|</span><a href="/Work/Index" class="fenxi">后台管理</a><span>|</span><a href="#" onclick="tc()" class="fenxi">退出</a>
+</div> 
+   }    
+</div>
+</div>
+<div id="nav"><div class="conent">
+<div class="daohang">
+<ul>
+    <li class="active" ><a href="/Home/Index" style="color:gold;" id="首页">首页</a></li>
+    <li><a href="/Home/List?Category=学校新闻" id="学校新闻">学校新闻</a></li>
+     <li><a href="/Home/List?Category=通知公告" id="通知公告">通知公告</a></li>
+    <li><a href="/Home/CXXJ">学籍查询</a></li>
+    <li><a href="/Home/CJCX">成绩查询</a></li>
+<li><a href="/Home/List?Category=补贴政策" id="补贴政策">补贴政策</a></li>
+    <li><a href="/Home/List?Category=推荐招聘" id="推荐招聘">推荐招聘</a></li>
+    <li><a href="/Home/List?Category=大学生村官" id="大学生村官">大学生村官</a></li>
+     <li><a href="/Home/List?Category=人才引进" id="人才引进">人才引进</a></li>
+    <li><a href="/Home/List?Category=就业指南" id="就业指南">就业指南</a></li>
+    <li><a href="/Home/Detail?ID=2">关于我们</a></li></ul>
+</div>
+
+</div></div>
+@RenderBody()
+
+
+<!--footer-->
+<div id="footer">
+
+<div class="conent_banq"><p></p>
+<p> 运城学院市网络备案编号：112456544 </p>
+<p>版权归 © 2019  运城学院所有,翻版必究</p></div>
+</div>
+<script type="text/javascript">
+   
+    function tc() {
+        $.ajax({
+            type: "post",
+            url: "/Home/LogOff",
+            success: function (data) {
+                if (data) {
+                    window.location.reload();
+                }
+            }
+        });
+    }
+
+   
+</script>
+</body>
+</html>
+

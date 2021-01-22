@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, Users-scalable=no">
+    <title>修改个人信息</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="../../Scripts/jquery-1.7.1.js"></script>
+    <script src="/Mobile/js/rem.js"></script> 
+    <script src="/Mobile/js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/Mobile/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile/css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile/css/loaders.min.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile/css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile/slick/slick.css
+          <link href="../../Mobile/css/demo.css" rel="stylesheet" />
+    <link href="../../Mobile/css/iconfont.css" rel="stylesheet" />
+</head>
+	<body>
+		<div class="headertwo clearfloat" id="header">
+				<a href="javascript:history.go(-1)" class="fl box-s"><i class="icon iconfont"></i></a>
+			<p class="fl">修改个人信息</p>
+		</div>
+		
+		<div class="modify clearfloat" id="main">
+			<ul>
+                <li class="clearfloat">
+					<input type="text" name="" id="iptname" value="" placeholder="姓名" class="sname" />
+				</li>
+                <li class="clearfloat">
+					<input type="text" name="" id="iptmajor" value="" placeholder="专业" class="sname" />
+				</li>
+                 <li class="clearfloat">
+					<input type="text" name="" id="iptclass" value="" placeholder="班级" class="sname" />
+				</li>
+                  <li class="clearfloat">
+					<input type="text" name="" id="iptsex" value="" placeholder="性别" class="sname" />
+				</li>
+                  <li class="clearfloat">
+					<input type="text" name="" id="iptage" value="" placeholder="年龄" class="sname" />
+				</li>
+                 <li class="clearfloat">
+					<input type="text" name="" id="iptphone" value="" placeholder="手机" class="sname" />
+				</li>
+				<li class="clearfloat">
+					<input type="password" name="" id="iptpassword" value="" placeholder="新密码，不改可不填" class="sname" />
+				</li>
+				<li class="clearfloat">
+					<input type="password" name="" id="iptcomf" value="" placeholder="确认密码，不改可不填" class="syzma fl" />
+				</li>
+			</ul>
+			<a href="#" class="pay-btn clearfloat" onclick="Edit()" style="background-color:#36A1DB;">
+				修改
+			</a>
+		</div>		
+	</body>
+	<script type="text/javascript" src="/Mobile/js/jquery-1.8.3.min.js" ></script>
+	<script type="text/javascript" src="/Mobile/js/jquery.SuperSlide.2.1.js" ></script>
+	<script type="text/javascript" src="/Mobile/slick/slick.min.js" ></script>
+	<script type="text/javascript" src="/Mobile/js/jquery.leanModal.min.js"></script>
+	<script type="text/javascript" src="/Mobile/js/tchuang.js" ></script>
+	<script type="text/javascript" src="/Mobile/js/hmt.js" ></script>
+</html>
+
+
+<script type="text/ecmascript">
+    $(function () {
+        $.ajax({
+            type: "post",
+            traditional: true,
+            url: "/Wap/GetStu",
+            datatpye: "json",
+            success: function (data) {
+                $("#iptmajor").val(data.Major);
+                $("#iptclass").val(data.Class);
+                $("#iptsex").val(data.Sex);
+                $("#iptage").val(data.Age);
+                $("#iptname").val(data.Name);
+                $("#iptphone").val(data.Phone);
+            }
+        });
+    });
+    function Edit() {
+        var PassWord = $("#iptpassword").val();
+        var ComPassWord = $("#iptcomf").val();
+        if (PassWord!=""&&(PassWord.length < 6 || PassWord.length > 20)) {
+            alert("密码长度必须在6-20位数之间！");
+            return;
+        }
+        if (PassWord != ComPassWord) {
+            alert("两次密码输入不一致！");
+            return;
+        }
+        $.ajax({
+            type: "post",
+            traditional: true,
+            url: "/Wap/EditPassword",
+            data: { Major: $("#iptmajor").val(), Class: $("#iptclass").val(), Sex: $("#iptsex").val(), Age: $("#iptage").val(), Name: $("#iptname").val(), Phone: $("#iptphone").val(), StuPSD: PassWord },
+            datatpye: "json",
+            success: function (data) {
+                alert("保存成功！");
+                window.location="/Wap/mindex"
+            }
+        });
+    }
+</script>

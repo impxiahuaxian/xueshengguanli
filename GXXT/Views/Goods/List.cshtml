@@ -1,0 +1,59 @@
+﻿@model MVC.PagedList<Maticsoft.Model.Goods>
+@using  MVC;
+
+    <table class="tablelist"  >
+    	<thead>
+    	<tr>
+        <th>序号<i class="sort"><img src="/Content/images/px.gif" /></i></th>        
+                 <th>名称</th>
+             <th>品牌</th>
+             <th>押金</th>
+             <th>日租金</th>
+            <th>月租金</th>
+             <th>联系人</th>
+            <th>手机</th>
+            
+       <th>状态</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+              @if (Model != null && Model.Count > 0)
+{
+    int i = 0; 
+       
+            foreach (var item in Model)
+        {
+            i++;    
+        <tr>
+        <td>@i</td>
+         
+             <td>@item.Name</td>
+              <td>@item.GoodPP</td>
+              <td>@item.Price</td>
+              <td>@item.RPrice</td>
+              <td>@item.YPrice</td>
+              <td>@item.Contacts</td>
+              <td>@item.Phone</td>
+
+
+      <td style="color:green;">@item.State</td>
+
+ 
+        <td>
+           
+            <a href="#" onclick="Edit(@item.ID)"   >下架删除</a> 
+           
+        </td>
+        </tr>    
+            }
+} 
+        </tbody>
+    </table>
+    
+ <div class="pagination pagination-centered">
+    	  @Html.Pager(Model, new PagerOptions { ShowFirstLast = false, PrevPageText = "上一页", NextPageText = "下一页", AlwaysShowFirstLastPageNumber = true }, "Paged", new { action = "Manage" })
+    </div>
+
+    
+

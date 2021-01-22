@@ -1,0 +1,46 @@
+﻿@model MVC.PagedList<Maticsoft.Model.Goods>
+@using MVC  
+@{
+    Layout = null;
+}
+ 
+	<div class="schedule clearfloat">
+			  @foreach (var item in Model)
+                    {
+		    	<div class="content clearfloat box-s">					
+		    		<div class="list clearfloat fl box-s">
+		    			<a href="/Wap/Detail?id=@item.ID">
+			    			
+			    			<div class="right clearfloat" style="float:left;">
+			    				<div class="tit clearfloat">
+			    					<p class="fl">@item.Name</p>
+			    					
+			    				</div>
+			    				<p class="recom-jianjie">品牌：@item.GoodPP  </p>
+                                <p class="recom-jianjie">状态：@item.State  </p>
+                                <p class="recom-jianjie">发布日期：@item.Str1 </p>
+			    				</div>
+                          
+                            </a>
+			    			</div>
+		    		</div>	
+		    		<div class="topsche-top entrust box-s clearfloat">
+                          <p class="tit fr entrust-btn" onclick="DelUsers(this)" id="@item.ID">
+							删除
+						</p>
+                          <p class="tit fr entrust-btn entrust-btntwo" onclick="self.location ='/Wap/Create?ID=@item.ID';">
+							修改
+						</p>
+					<p class="tit fr entrust-btn entrust-btntwo" onclick="refreah('@item.ID')">
+							刷新
+						</p>
+                      
+                      
+					</div>
+		    	
+     }
+        </div>
+  <div class="pagination pagination-centered" style="font-size:small;">
+   
+               @Html.Pager(Model, new PagerOptions { ShowFirstLast = false, PrevPageText = "上一页", NextPageText = "下一页", AlwaysShowFirstLastPageNumber = true }, "Paged", new { action = "mmanage" })
+           </div>

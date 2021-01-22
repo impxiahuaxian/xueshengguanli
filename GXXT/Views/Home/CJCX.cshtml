@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Regist";
+    Layout = null;
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+<link href="/pcwap/css/huiyuan.css"type="text/css" rel="stylesheet">
+</head>
+<body style="background:#fff;">
+<div id="denglu">
+<div class="left_dl"><img src="/pcwap/image/logo.jpg">
+</div>
+<a href="/Home/Index">返回首页</a>
+</div>
+<div id="zhuce">
+<div class="tittle_zc">
+<span>查询成绩</span>
+</div>
+<div class="conent">
+<div class="left_con">
+<table width="536" height="225" border="0" style="margin-top:20px;">
+  
+ 
+  
+    <tr>
+    <td width="90" height="54"><div align="right">身份证号：</div></td>
+    <td width="436"><input type="text" id="UserSFZ" class="text_chang"/></td>
+  </tr>
+  
+  
+  <tr>
+    <td height="65"><div align="right"></div></td>
+    <td><input type="button" class="zhuce_button" value="点击查询" onclick="subregist()" /></td>
+  </tr>
+  
+</table>
+
+</div>
+
+</div>
+</div>
+<!--footer-->
+<div id="footer">
+ <p><span>Copyright © 2020  学生信息管理系统所有 ，服务热线：0311-80798225</span></p></div>
+</body>
+</html>
+
+<script type="text/ecmascript">
+    function subregist() {
+
+        var UserSFZ = $("#UserSFZ").val();
+        if (UserSFZ=="") {
+            alert("请输入身份证信息");
+        }
+        else {
+            $.ajax({
+                type: "post",
+                traditional: true,
+                url: "/Students/GetStu",
+                data: { UserSFZ: UserSFZ },
+                datatpye: "json",
+                success: function (data) {
+                    if (!data) {
+                        alert("未查询到信息！");
+                    }
+                    else {
+                      
+                        window.location = "/Home/CJXX?UserSFZ=" + UserSFZ;
+                    }
+                }
+            });
+           
+        }
+      
+    }
+
+    function checkPhone() {
+        var phone = document.getElementById('UsersName').value;
+        if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
+            alert("手机号码有误，请重填");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>

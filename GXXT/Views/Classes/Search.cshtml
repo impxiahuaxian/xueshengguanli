@@ -1,0 +1,26 @@
+﻿@model Maticsoft.ViewModel.ClassesSearch
+            <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+ @using (Html.BeginForm("Manage", "Classes", new RouteValueDictionary { { "Page", "" } }, FormMethod.Get, new { @id = "Usersub" }))
+ {
+    <div class="tools" >
+        <div style=" float:left; height:100%;text-align:center;padding:10px;">
+     系别：@Html.TextBoxFor(m => m.XB, new { @style = "height:20px;" })
+            班号：@Html.TextBoxFor(m => m.BH, new { @style = "height:20px;" })
+             </div>
+        <div>    	<ul class="toolbar" >
+            
+            <li  onclick="Submit()"><span><img src="/Content/images/ico06.png"  /></span>搜索</li>
+   
+           
+        </ul>
+        </div>
+
+        
+   
+        </div>
+ }
+<script type="text/ecmascript">
+    function Submit() {
+        $("#Usersub").submit();
+    }
+</script>

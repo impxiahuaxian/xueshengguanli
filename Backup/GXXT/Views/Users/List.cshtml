@@ -1,0 +1,55 @@
+﻿@model MVC.PagedList<Maticsoft.Model.Users>
+@using  MVC;
+
+    <table class="tablelist"  >
+    	<thead>
+    	<tr>
+        <th>序号<i class="sort"><img src="/Content/images/px.gif" /></i></th>        
+                 <th>手机</th>
+             <th>姓名</th>
+             <th>毕业院校</th>
+            
+            <th>性别</th>
+             <th>年龄</th>
+           
+           
+       
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+              @if (Model != null && Model.Count > 0)
+{
+    int i = 0; 
+       
+            foreach (var item in Model)
+        {
+            i++;    
+        <tr>
+        <td>@i</td>
+         
+             <td>@item.Phone</td>
+              <td>@item.UserName</td>
+              <td>@item.Major</td>
+           
+              <td>@item.Sex</td>
+              <td>@item.Age</td>
+          
+
+        <td>
+            <a href="#" onclick="Edit(@item.ID)"   >删除</a> 
+           
+           
+        </td>
+        </tr>    
+            }
+} 
+        </tbody>
+    </table>
+    
+ <div class="pagination pagination-centered">
+    	  @Html.Pager(Model, new PagerOptions { ShowFirstLast = false, PrevPageText = "上一页", NextPageText = "下一页", AlwaysShowFirstLastPageNumber = true }, "Paged", new { action = "Manage" })
+    </div>
+
+    
+

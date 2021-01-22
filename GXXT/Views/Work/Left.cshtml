@@ -1,0 +1,175 @@
+﻿@model Conris.DBA.ViewModel.AdminUsersEdit
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="/Content/js/jquery.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        //导航切换
+        $(".menuson .header").click(function () {
+            var $parent = $(this).parent();
+            $(".menuson>li.active").not($parent).removeClass("active open").find('.sub-menus').hide();
+
+            $parent.addClass("active");
+            if (!!$(this).next('.sub-menus').size()) {
+                if ($parent.hasClass("open")) {
+                    $parent.removeClass("open").find('.sub-menus').hide();
+                } else {
+                    $parent.addClass("open").find('.sub-menus').show();
+                }
+            }
+        });
+
+        // 三级菜单点击
+        $('.sub-menus li').click(function (e) {
+            $(".sub-menus li.active").removeClass("active")
+            $(this).addClass("active");
+        });
+
+        $('.title').click(function () {
+            var $ul = $(this).next('ul');
+            $('dd').find('.menuson').slideUp();
+            if ($ul.is(':visible')) {
+                $(this).next('.menuson').slideUp();
+            } else {
+                $(this).next('.menuson').slideDown();
+            }
+        });
+    })
+</script>
+
+
+</head>
+
+<body style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>工作栏目</div>
+    
+    <dl class="leftmenu">
+      @{
+         Conris.DBA.Model.UsersType UsersType = Conris.Services.AdminUserservice.GetNowUsersType();
+         string dep = Conris.Services.AdminUserservice.GetNowUsersDepartmentName();
+          }
+         @if (UsersType.Equals(Conris.DBA.Model.UsersType.Admin) || UsersType.Equals(Conris.DBA.Model.UsersType.Super))
+         {
+           <dd>
+    <div class="title">
+    <span><img src="/Content/images/leftico01.png" /></span>基础管理信息
+    </div>
+    	<ul class="menuson">
+        
+        <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/AdminUsers/UsersManage" target="rightFrame">职工管理</a>
+            <i></i>
+            </div>
+           
+        </li>
+        
+        <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/DepartmentInfo/DepartmentManage" target="rightFrame">部门管理</a>
+            <i></i>
+            </div>                
+         
+        </li>
+             <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/Job/JobManage" target="rightFrame">职位管理</a>
+            <i></i>
+            </div>                
+         
+        </li>
+        </ul>    
+    </dd>
+         }
+           <dd>
+    <div class="title">
+    <span><img src="/Content/images/leftico02.png" /></span>绩效管理
+    </div>
+    	<ul class="menuson">
+         @if (UsersType.Equals(Conris.DBA.Model.UsersType.Admin) || UsersType.Equals(Conris.DBA.Model.UsersType.Super))
+         {
+        <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/Records/RecordsManage?Str1=考勤" target="rightFrame">职工考勤</a>
+            <i></i>
+            </div>
+            
+        </li>
+             
+        <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/Records/Create?Str1=考勤" target="rightFrame">添加考勤</a>
+            <i></i>
+            </div>
+            
+        </li>
+               <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/Records/RecordsManage?Str1=奖励" target="rightFrame">职工奖励</a>
+            <i></i>
+            </div>
+            
+        </li>
+                <li>
+            <div class="header">
+            <cite></cite>
+            <a href="/Records/RCreate?Str1=奖励" target="rightFrame">添加奖励</a>
+            <i></i>
+            </div>
+            
+        </li>
+        <li>
+            <div class="header">
+            <cite></cite>
+               <a href="/Wages/WagesManage" target="rightFrame">职工工资管理</a>
+            <i></i>
+            </div>
+            
+        </li>
+            <li>
+            <div class="header">
+            <cite></cite>
+               <a href="/Wages/Create" target="rightFrame">添加工资</a>
+            <i></i>
+            </div>
+            
+        </li>
+         }
+            <li>
+            <div class="header">
+            <cite></cite>
+               <a href="/Records/WRecordsManage?UsersNum=@Conris.Services.AdminUserservice.GetNowUsersLoginName()" target="rightFrame">我的考勤</a>
+            <i></i>
+            </div>
+            
+        </li>
+             <li>
+            <div class="header">
+            <cite></cite>
+               <a href="/Wages/WWagesManage" target="rightFrame">我的工资</a>
+            <i></i>
+            </div>
+            
+        </li>
+        </ul>    
+    </dd> 
+    </dl>
+    
+</body>
+</html>
+

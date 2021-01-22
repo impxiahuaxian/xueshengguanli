@@ -1,0 +1,95 @@
+﻿@model Maticsoft.ViewModel.GoodsSearch
+@{
+    ViewBag.Title = "hyxx";
+    Layout = null;
+}
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; Users-scalable=0;">
+<meta content="telephone=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>校园物品共享系统</title>
+<link rel="stylesheet" type="text/css" href="/pcwap/assets/api/css/carpool/common.css?v=5.0">
+<link rel="stylesheet" type="text/css" href="/pcwap/assets/api/css/carpool/style.css?v=5.0">
+<script type="text/javascript" src="/pcwap/assets/api/js/carpool/index.js"></script>
+<script type="text/javascript" src="/pcwap/assets/api/js/carpool/lunbo.js"></script>
+<script src="/pcwap/assets/api/js/carpool/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/pcwap/assets/js/global.js"></script>
+</head>
+<body>
+<div class="toplink">
+	<div class="con">
+      
+        <h2 class="ind"></h2>
+        @if (Maticsoft.BLL.Users.GetNowUserID()!="")
+        {
+             <a href="/Home/Login" class="home" style="color:white;">欢迎您，@Maticsoft.BLL.Users.GetUserName()</a>
+        }
+        else{
+        <a href="/Wap/Regist" class="home" style="color:white;">登录/注册</a>
+        }
+    </div>
+</div>
+<div class="banner" id="banner">
+    	<div id="shop_skin_index">
+		 <div class="shop_skin_index_list banner" rel="edit-t01">
+        <div class="img"><div class="slider"><div class="flexslider">
+            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                <ul class="slides" style="width: 800%; -webkit-transition-duration: 0s; transition-duration: 0s; -webkit-transform: translate3d(-750px, 0px, 0px);">
+                    <li class="" style="width: 375px; float: left; display: block;"><a href="#"><img src="/pcwap/assets/api/images/1.jpg" alt="undefined"></a></li>
+
+                </ul></div></div></div></div>
+</div>		</div>
+</div>
+<div class="nav">
+	
+</div>
+<div class="content">
+ @Html.Action("Search",Model)
+    <div class="ttl">
+    	<img src="/pcwap/assets/api/images/coin1.png"><span>物品列表</span>
+    </div>
+	@Html.Action("List",Model)
+</div>
+<div class="footer">
+	<a class="home" href="/Wap/Index">
+    	<img src="/pcwap/assets/api/images/home2.png">
+        <span>首页</span>
+    </a>
+	<a class="release" href="/Wap/Create">
+    	<img src="/pcwap/assets/api/images/relese.png">
+    	<span>发布</span>
+    </a>
+    <a class="member" href="/Wap/mindex">
+    	<img src="/pcwap/assets/api/images/memeber.png">
+    	<span>我的</span>
+    </a>
+</div>
+<script type="text/javascript" src="/pcwap/assets/js/plugin/flexslider/flexslider.js"></script>
+<script type="text/javascript">
+    var domain = {
+        www: '',
+        static: '',
+        img: '',
+        file: '',
+        kf: ''
+    };
+    var shop_skin_data = [{
+        "PId": "50798",
+        "SId": "2",
+        "TradeId": "0",
+        "MemberId": "1936",
+        "ContentsType": "1",
+        "Title": "\"\"",
+        "ImgPath": ["['/pcwap/assets/api/images/1.jpg','/pcwap/assets/api/images/1.jpg']"],
+        //"Url": "[\"http://baidu.com\",\"http://www.xuran.net\"]",
+        "Url": "[\"http://www.xuran.net\",\"http://www.xuran.net\"]",
+        "Postion": "t01",
+        "Width": "640",
+        "Height": "320",
+        "NeedLink": "1"
+    }];
+    $(document).ready(carpool_obj.banner_init);</script>
+</body></html>

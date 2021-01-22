@@ -1,0 +1,72 @@
+.ztwh {width:1200px;margin:0 auto;}
+
+.top {width:100%;float:left;}
+.nav {width:1000px;float:left;height:40px;background:url(/images/myshouyezw-1.jpg) repeat-x; border-bottom:none;}
+
+.nav ul li {float:left; height:35px; padding:5px 5px 0 5px;}
+.nav li.no {background:none;}
+.nav li a {height:35px; text-align:center; color:#fff;font-size:14px;float:left; font-weight:bold; line-height:28px; overflow:hidden; 
+padding-left:8px;
+padding-right:8px;
+display:block;
+font-family:inheritarial,"Hiragino Sans GB","Microsoft Yahei","微软雅黑","宋体",宋体,Tahoma,Arial,Helvetica,STHeiti
+}/*93->81->70*/
+
+.mart {margin:0; width:1200px; clear:both;}
+.hdp {width:320px;height:220px;float:left;border:1px solid #d6d6d6;}
+.wlxw {width:343px;overflow:hidden;float:left;display:inline;margin:0 16px;}
+.wlxw2 {width:366px;overflow:hidden;float:left;display:inline;margin:0 15px;}
+.bt1 {width:363px;float:left;height:34px;background:url(/images/wlgx_bt1.jpg) no-repeat;line-height:34px;padding:0 0 0 5px;display:inline;font-weight:bold;color:#000;font-size:14px;}
+.xwnr,.xwnr_t,.xwnr_b {width:100%;float:left;}
+.xwnr_b {height:130px; overflow:hidden;}
+.xwnr_t {line-height:18px;color:#666;border-bottom:1px dotted #d6d6d6;padding:0 0 7px 0;margin:0 0 6px 0;}
+.xwnr_t p {line-height:34px;}
+.xwnr_t p a {color:#333;font-size:14px;font-weight:bold;text-align:center;display:block;}
+.xx a {color:#ff7200;}
+
+.xwnr_t div{ text-indent:2em;}
+	
+.xwnr_t p a:hover,.xx a:hover,.xwnr_b li a:hover,.more a:hover,.ggnr li a:hover,.wz p a:hover,.bt3_r a:hover,.txzx li a:hover,.qkbg li a:hover,.more1 a:hover,.bt3_r1 a:hover,.yql li a:hover,.zjxq p a:hover,.wlzj li a:hover,.fwnr li a:hover {text-decoration:underline;color:#ff5100;}
+
+.xwnr_b ul li,.ggnr ul li,.txzx ul li,.qkbg ul li {width:352px;padding:0 0 0 10px;line-height:26px;background:url(/images/wlgx_xtb2.jpg) 0 12px no-repeat;font-size:14px;overflow:hidden;}
+.xwnr_b li a,.wz p a {color:#333;}
+
+.xwnr_b ul li {width:auto; min-width:340px;}
+
+
+.gsgg {width:390px;float:left;}
+.bt2 {width:390px;float:left;height:34px;background:url(/images/wlgx_bt2.jpg) no-repeat;line-height:34px;padding:0 0 0 10px;display:inline;}
+.bt2l,.bt4l {float:left;font-size:14px;font-weight:bold;}
+.more,.more1 {float:right;margin:0 5px 0 10px;font-size:14px;}
+.more a {color:#fff;}
+.more a:hover{color:#def;}
+.more1 a {color:#999;}
+
+.ggnr {width:278px;float:left;border:1px solid #d6d6d6;border-top:none;height:174px;padding:10px 0 0 0;}
+.ggnr ul li,.qkbg ul li {margin:0 0 0 10px;overflow:hidden;font-size:14px;}
+.qkbg ul{ clear:both;}
+
+.txzx,.txzx_t1 {width:380px; float:left;margin:0 20px 0 0;display:inline;}
+.txzx_t1 {margin:15px 0 10px 0;display:inline;float:left;}
+.txzx_t1 .pic {width:105px;height:75px;float:left;margin:0 15px 0 0;display:inline;}
+.txzx,.txzx_t {width:390px;float:left;margin:0 20px 0 0;display:inline;}
+.txzx_t {margin:15px 0 10px 0;display:inline;float:left;}
+.txzx_t .pic {width:105px;height:75px;float:left;margin:0 15px 0 0;display:inline;}
+.wz {width:225px;float:left;}
+.wz p {width:100%; overflow:hidden; font-weight:bold;margin-bottom:6px; line-height:18px;}
+.wz span {width:100%;line-height:18px;color:#666;}
+.wz div {text-indent:2em; line-height:18px; color:#666;}
+.ggnr li a,.txzx li a,.qkbg li a,.zjxq p a,.wlzj li a {color:#333;}
+
+.txzx_b {float:left;}
+.bt3 {width:385px;height:34px;background:url(/images/wlgx_bt1.jpg) no-repeat;line-height:34px;padding:0 0 0 5px;}
+.bt3_l {float:left;font-weight:bold;color:#000;font-size:14px;}
+.bt3_r,.bt3_r1 {float:right;}
+.bt3_r a {margin:0 5px;display:inline;color:#333;}
+.bt3_r1 a {margin:0 5px 0 0;display:inline;color:#333;}
+.txzx ul li {width:335px;}
+
+.wlzj {width:370px;float:left;border:1px solid #d6d6d6;border-top:none;padding:0 0 11px 0;}
+.qkbg {width:370px; height:300px;float:right;border:1px solid #d6d6d6;border-top:none;padding:0; }
+.bt4 {width:360px;border-top:2px solid #237dd7;border-bottom:1px solid #d6d6d6;height:32px;line-height:32px;padding:0 0 0 10px;margin:0 0 12px 0;}
+

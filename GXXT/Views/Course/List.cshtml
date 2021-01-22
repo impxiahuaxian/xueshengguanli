@@ -1,0 +1,42 @@
+﻿@model MVC.PagedList<Maticsoft.Model.Course>
+@using  MVC;
+
+    <table class="tablelist"  >
+    	<thead>
+    	<tr>
+        <th>序号<i class="sort"><img src="/Content/images/px.gif" /></i></th>        
+            <th>课程名</th>
+            <th>学分</th>
+            <th>学时</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+              @if (Model != null && Model.Count > 0)
+{
+    int i = 0; 
+       
+            foreach (var item in Model)
+        {
+            i++;    
+        <tr>
+        <td>@i</td>
+            <td>@item.Name</td>
+            <td>@item.XF</td>
+            <td>@item.SC</td>
+        <td><a href="/Course/Create?ID=@item.ID"   >修改</a> 
+            <a href="#" onclick="Del(@item.ID)"   >删除</a> 
+           
+        </td>
+        </tr>    
+            }
+} 
+        </tbody>
+    </table>
+    
+ <div class="pagination pagination-centered">
+    	  @Html.Pager(Model, new PagerOptions { ShowFirstLast = false, PrevPageText = "上一页", NextPageText = "下一页", AlwaysShowFirstLastPageNumber = true }, "Paged", new { action = "Manage" })
+    </div>
+
+    
+

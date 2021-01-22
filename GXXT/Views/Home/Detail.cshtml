@@ -1,0 +1,101 @@
+﻿@model Maticsoft.Model.NewsInfo
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="weizhi"><span>位置：</span><a href="/Home/Index">首页</a><span> &gt; </span><a href="#">@Model.Str1</a><span> &gt; </span><a href="liebiao.html">详细页</a></div>
+<div id="main2" style="width:1000px;">
+  <div class="left_xx"  style="width:1000px;">
+    <div class="tittle"  style="width:1000px;">
+      <h1>@Model.Title</h1>
+      <div style="height:10px;"></div>
+        @{
+            Maticsoft.BLL.Users bll = new Maticsoft.BLL.Users();
+            }
+      <p ><span>发布时间：@Model.Time</span>
+        
+          </p>
+    </div>
+    @Html.Raw(Model.NewsContent)
+
+   
+   </div>
+<script type="text/javascript">
+    function goauth(obj) {
+        var ID = $(obj).attr("id");
+        window.location = "/Home/List?UserID=" + ID;
+    }
+$(document).ready(function(){
+	$(".open").click(function(){
+		$(".close_s").show();
+		$(".open").hide();
+		$(".coloses").show();
+		});
+$(".coloses").click(function(){
+		$(".close_s").hide();
+		$(".coloses").hide();
+		$(".open").show();
+		});
+	});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".pin_titt a").click(function(){
+		$(this).addClass("asd").siblings("a").removeClass("asd");
+		$(".xian").toggle();
+		});
+	});
+</script> 
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".huifu").click(function(){
+		$(this).parent().siblings(".pinlu_hid").toggle();
+		});
+		$(".button_ti").click(function(){
+		$(".pinlu_hid").hide();
+		});
+		
+	});
+</script>
+  
+  <div style="clear:both"></div>
+</div>
+<script type="text/ecmascript">
+    $(function () {
+        $.ajax({
+            type: "post",
+            traditional: true,
+            url: "/Users/GetSC",
+            data: { ID: '@Model.UserID' },
+            datatpye: "json",
+            success: function (data) {
+                if (data) {
+                    $("#sc").html("已关注");
+                }
+
+            }
+        });
+    });
+    function DY(obj) {
+        var ID = $(obj).attr("uid");
+        $.ajax({
+            type: "post",
+            traditional: true,
+            url: "/Users/DY",
+            data: { ID: '@Model.UserID' },
+                datatpye: "json",
+                success: function (data) {
+                    if (data) {
+                        alert("操作成功！")
+                        window.location.reload();
+                    }
+                    else {
+                        window.location = "/Home/Login";
+                    }
+                }
+            });
+
+        }
+
+</script>

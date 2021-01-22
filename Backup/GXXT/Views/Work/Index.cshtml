@@ -1,0 +1,145 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, Users-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>学生信息管理系统</title>  
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="/Style/css//pintuer.css">
+    <link rel="stylesheet" href="/Style/css//admin.css">
+    <script src="/Style/js/jquery.js"></script>   
+</head>
+<body style="background-color:#f2f9fd;">
+<div class="header bg-main">
+  <div class="logo margin-big-left fadein-top">
+    <h1>学生信息管理系统</h1>
+  </div>
+  <div class="head-l"> &nbsp;&nbsp; &nbsp;&nbsp;<a class="button button-little bg-red" href="#" id="btnQiut"><span class="icon-power-off"></span> 退出登录</a> <a class="button button-little bg-red" href="#" id="gosy"> 返回首页</a> </div>
+</div>
+<div class="leftnav">
+  <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
+ 
+@{
+    string UserName = Maticsoft.BLL.Users.GetUsersName();
+    string UserType ="";
+    if (UserName.Substring(0,3)=="管理员")
+    {
+        UserType = "管理员";
+    }
+    else
+    {
+        UserType = "用户";
+    }
+    }
+ @if (UserType == "管理员")
+ {
+ 
+         <h2><span class="icon-Users"></span>管理员管理</h2>
+         <ul>
+      <li><a  href="/Admin/Manage" target="right"><span class="icon-caret-right"></span>管理员管理</a></li>
+    <li><a href="/Admin/Create" target="right"><span class="icon-caret-right"></span>添加管理员</a></li>
+             </ul>
+   <h2><span class="icon-Users"></span>会员管理</h2>
+         <ul>
+      <li><a  href="/Users/Manage" target="right"><span class="icon-caret-right"></span>会员管理</a></li>
+    
+             
+             </ul>  
+     <h2><span class="icon-Users"></span>学生管理</h2>
+         <ul>
+      <li><a  href="/Students/Manage" target="right"><span class="icon-caret-right"></span>学生管理</a></li>
+    <li><a  href="/Students/Create" target="right"><span class="icon-caret-right"></span>添加学生</a></li>
+             
+             </ul>  
+      <h2><span class="icon-Users"></span>成绩管理</h2>
+         <ul>
+      <li><a  href="/Records/Manage" target="right"><span class="icon-caret-right"></span>成绩管理</a></li>
+    <li><a  href="/Records/Create" target="right"><span class="icon-caret-right"></span>添加成绩</a></li>
+             
+             </ul>  
+         <h2><span class="icon-Users"></span>新闻管理</h2>
+         <ul>
+      <li><a  href="/NewsInfo/Manage" target="right"><span class="icon-caret-right"></span>新闻管理</a></li>
+     <li><a  href="/NewsInfo/Create" target="right"><span class="icon-caret-right"></span>添加新闻</a></li>
+            
+             </ul>  
+ }
+ else
+ {
+    <h2><span class="icon-Users"></span>个人信息</h2>
+         <ul>
+      <li><a  href="/Work/GRXX" target="right"><span class="icon-caret-right"></span>个人信息</a></li>
+             </ul>
+         <h2><span class="icon-Users"></span>学籍管理</h2>
+         <ul>
+      <li><a  href="/Students/Manage?QQ=@Maticsoft.BLL.Users.GetNowUserSFZ()" target="right"><span class="icon-caret-right"></span>我的学籍</a></li>
+    
+       
+             </ul>
+       <h2><span class="icon-Users"></span>我的成绩</h2>
+         <ul>
+      <li><a  href="/Records/Manage?CID=@Maticsoft.BLL.Users.GetNowUserSFZ()" target="right"><span class="icon-caret-right"></span>我的成绩</a></li>
+    
+       
+             </ul>
+  
+    
+        
+ }
+      
+
+    
+</div>
+
+
+<div class="admin">
+    @if (UserType=="用户")
+    {
+        <iframe scrolling="auto" id="iframe" rameborder="0" src="/Work/GRXX" name="right" width="100%" height="100%"></iframe>
+    }
+    else
+    {
+           <iframe scrolling="auto" id="iframe" rameborder="0" src="/NewsInfo/Manage" name="right" width="100%" height="100%"></iframe>  
+    }
+</div>
+
+</body>
+</html>
+<!doctype html>
+
+<script type="text/javascript">
+  
+    $(function () {
+        $("#btnQiut").click(function () {
+            $.ajax({
+                type: "post",
+                url: "/Home/LogOff",
+                success: function (data) {
+                    if (data) {
+                        parent.location.href = "/Home/Login";
+                    }
+                }
+            });
+        });
+        $("#gosy").click(function () {
+            parent.location.href = "/Home/Index";
+        });
+        $(".leftnav h2").click(function () {
+            $(this).next().slideToggle(200);
+            $(this).toggleClass("on");
+        })
+        $(".leftnav ul li a").click(function () {
+            $("#a_leader_txt").text($(this).text());
+            $(".leftnav ul li a").removeClass("on");
+            $(this).addClass("on");
+        })
+    });
+</script>
+
+

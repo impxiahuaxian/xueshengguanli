@@ -1,0 +1,47 @@
+﻿@model Maticsoft.ViewModel.StudentsSearch
+           <script type="text/javascript" src="/Content/js/jquery.js"></script>
+@{
+    string UserName = Maticsoft.BLL.Users.GetUsersName();
+    string UserType ="";
+    if (UserName.Substring(0,3)=="管理员")
+    {
+        UserType = "管理员";
+    }
+    else
+    {
+        UserType = "用户";
+    }
+    }
+@if (UserType == "管理员")
+{
+   using (Html.BeginForm("Manage", "Students", new RouteValueDictionary { { "Page", "" } }, FormMethod.Get, new { @id = "UserSub" }))
+ {
+    <div class="tools" >
+        <div style=" float:left; height:100%;text-align:center;padding:10px;">
+     姓名：@Html.TextBoxFor(m => m.UserName, new { @style = "height:20px;" })
+              电话：@Html.TextBoxFor(m => m.Phone, new { @style = "height:20px;" })
+             身份证：@Html.TextBoxFor(m => m.UserSFZ, new { @style = "height:20px;" })
+             毕业院校：@Html.TextBoxFor(m => m.IsZJ, new { @style = "height:20px;" })
+            专业：@Html.TextBoxFor(m => m.IsJDLK, new { @style = "height:20px;" })
+             </div>
+        <div>    	<ul class="toolbar" >
+            
+            <li  onclick="Submit()"><span><img src="/Content/images/ico06.png"  /></span>搜索</li>
+   
+           
+        </ul>
+        </div>
+
+        
+   
+        </div>
+ } 
+}
+ 
+<script type="text/ecmascript">
+    $("#IsZJ").val('@Model.IsZJ');
+    $("#IsJDLK").val('@Model.IsJDLK');
+    function Submit() {
+        $("#UserSub").submit();
+    }
+</script>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2920720A-204E-460E-8B5C-C3AEFD769A3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Conris.Controls.MVC</RootNamespace>
+    <AssemblyName>Conris.Controls.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\QueryBuider\IQueryBuilder.cs" />
+    <Compile Include="Extensions\QueryBuider\PredicateBuilder.cs" />
+    <Compile Include="MVCPager\PagedList.cs" />
+    <Compile Include="MVCPager\PagerBuilder.cs" />
+    <Compile Include="MVCPager\PagerHelper.cs" />
+    <Compile Include="MVCPager\PagerItem.cs" />
+    <Compile Include="MVCPager\PagerOptions.cs" />
+    <Compile Include="MVCPager\SortColumn.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationAttribute\ActionNameSelectorAttribute.cs" />
+    <Compile Include="ValidationAttribute\ValidateLengthAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Conris.Controls.MVC.dll" />
+    <Content Include="bin\Debug\Conris.Controls.MVC.pdb" />
+    <Content Include="bin\Debug\System.Web.Mvc.dll" />
+    <Content Include="bin\Debug\System.Web.Mvc.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\Release\Conris.Controls.MVC.dll" />
+    <Content Include="bin\Release\Conris.Controls.MVC.pdb" />
+    <Content Include="bin\Release\System.Web.Mvc.dll" />
+    <Content Include="bin\Release\System.Web.Mvc.xml" />
+    <Content Include="bin\Release\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="obj\Debug\Conris.Controls.MVC.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Conris.Controls.MVC.dll" />
+    <Content Include="obj\Debug\Conris.Controls.MVC.pdb" />
+    <Content Include="obj\Debug\MVC.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Conris.Controls.MVC.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Conris.Controls.MVC.dll" />
+    <Content Include="obj\Release\Conris.Controls.MVC.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="obj\Release\Conris.Controls.MVC.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
